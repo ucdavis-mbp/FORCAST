@@ -25,10 +25,10 @@ fi
 apt-get update
 
 #then install sudo
-if [ ! -n "$(command -v sudo)" ]
-then
-    apt-get install -y sudo
-fi
+# if [ ! -n "$(command -v sudo)" ]
+# then
+#     apt-get install -y sudo
+# fi
 
 #create necessary directories. /data/db is for MongoDB
 req_dirs=($root_dir/bin /data/db  $root_dir/config)
@@ -62,11 +62,13 @@ wget -q -O /tmp/libpng12.deb http://mirrors.kernel.org/ubuntu/pool/main/libp/lib
   && dpkg -i /tmp/libpng12.deb \
   && rm /tmp/libpng12.deb
 
+# fix missing curl error
+apt-get install -y libcurl4-openssl-dev
 
 #Now install Mongodb 3.6.12
 apt-get install -y apt-transport-https
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
-echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.6.list
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5
+echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.6 multiverse" | tee /etc/apt/sources.list.d/mongodb-org-3.6.list
 apt-get update
 apt-get install -y mongodb-org
 
@@ -88,7 +90,7 @@ then
         primer3config=$(pwd)"/primer3/src/primer3_config/"
 else
         echo "Installing Primer3...\n"
-        sudo apt-get install -y build-essential g++ cmake
+        apt-get install -y build-essential g++ cmake
         git clone https://github.com/primer3-org/primer3.git primer3
         cd primer3/src
         make
@@ -126,7 +128,7 @@ then
         fi
         diceypath=$(pwd)"/dicey"
 else
-        sudo apt-get install -y build-essential g++ cmake zlib1g-dev libbz2-dev liblzma-dev libboost-all-dev vim
+        apt-get install -y build-essential g++ cmake zlib1g-dev libbz2-dev liblzma-dev libboost-all-dev vim
         git clone --recursive https://github.com/gear-genomics/dicey.git
         cd dicey/
         git checkout 64fe04b4991a02da32f8fa5c875db859d5480d25 . # freezing version
@@ -139,7 +141,7 @@ else
         cd ..
 fi
 
-sudo a2enmod cgi
+a2enmod cgi
 
 cd ..
 # now create the config file to store the paths to the dependency executables

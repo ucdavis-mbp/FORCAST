@@ -9,6 +9,8 @@ jbrowse/data.*
 jbrowse/Makefile
 jbrowse/setup.log
 jbrowse/jbrowse.conf
+jbrowse/MYMETA.json
+jbrowse/MYMETA.yml
 config
 mongodb
 

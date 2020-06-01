@@ -1,0 +1,71 @@
+{
+   "plugins" : [
+      "NeatHTMLFeatures",
+      "NeatCanvasFeatures",
+      "HideTrackLabels"
+   ],
+   "formatVersion" : 1,
+   "tracks" : [
+      {
+         "storeClass" : "JBrowse/Store/Sequence/StaticChunked",
+         "label" : "DNA",
+         "urlTemplate" : "seq/{refseq_dirpath}/{refseq}-",
+         "chunkSize" : 20000,
+         "key" : "Reference sequence",
+         "category" : "Reference sequence",
+         "type" : "SequenceTrack",
+         "seqType" : "dna"
+      },
+      {
+         "track" : "Genes",
+         "category" : "Genes",
+         "key" : "Protein-coding genes",
+         "type" : "FeatureTrack",
+         "compress" : 0,
+         "urlTemplate" : "tracks/Genes/{refseq}/trackData.json",
+         "subfeatures" : true,
+         "label" : "Genes",
+         "storeClass" : "JBrowse/Store/SeqFeature/NCList",
+         "feature" : [
+            "gene"
+         ],
+         "style" : {
+            "subfeatureClasses" : {
+               "CDS" : "transcript-CDS"
+            },
+            "className" : "feature5",
+            "arrowheadClass" : "transcript-arrowhead"
+         },
+         "autocomplete" : "all"
+      },
+      {
+         "type" : "FeatureTrack",
+         "key" : "Exonerate predictions (misconfigured for test, and with a long description)",
+         "category" : "Genes",
+         "description" : 1,
+         "track" : "transcript_with_no_features",
+         "style" : {
+            "arrowheadClass" : "transcript-arrowhead",
+            "subfeatureClasses" : {
+               "UTR" : "transcript-UTR",
+               "CDS" : "transcript-CDS"
+            },
+            "className" : "transcript"
+         },
+         "autocomplete" : "all",
+         "storeClass" : "JBrowse/Store/SeqFeature/NCList",
+         "feature" : [
+            "mRNA"
+         ],
+         "urlTemplate" : "tracks/transcript_with_no_features/{refseq}/trackData.json",
+         "subfeatures" : true,
+         "label" : "transcript_with_no_features",
+         "compress" : 0
+      }
+   ],
+   "names" : {
+      "url" : "names/",
+      "type" : "Hash"
+   },
+   "dataset_id" : "yeast"
+}

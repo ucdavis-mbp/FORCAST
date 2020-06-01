@@ -38,7 +38,9 @@ From within the `FORCAST` directory, build the docker container:
 
 Depending on the size of your organism, it may take several hours to download the genome and build the index files. Once the setup is complete, the message: ` * Starting Apache httpd web server apache2 * ` will be displayed. FORCAST should now be available via web browser at your server's domain address (or at localhost if running locally on your personal computer).
 
-Once you're finished using FORCAST, it can be shut-down by typing Ctrl-C and typing ```docker-compose down``` on the command-line. Your guides and primers will be saved to the ```/mongo``` folder and the indexed genome files saved to the ```/jbrowse``` folder for the next time you start up FORCAST (again via ```docker-compose up```).
+Once you're finished using FORCAST, it can be shut-down by typing Ctrl-C and typing ```docker-compose down``` on the
+ command-line. Your guides and primers will be saved to the ```/mongodb``` folder and the indexed genome files saved
+  to the ```/jbrowse``` folder for the next time you start up FORCAST (again via ```docker-compose up```).
 
 ## Installing Natively
 (Requires `sudo` privileges and a machine running Ubuntu 16.04)
@@ -114,6 +116,10 @@ If you want your installation of FORCAST to be secured by https, please refer to
 ## Customization
 
 ### Custom Primer Design Settings
+
+Docker users: If you are using docker, you need to add these options to the .env file instead of the
+ ```primer3settings.conf```.
+
 First, go to to [the primer3 website](http://bioinfo.ut.ee/primer3/) and enter the custom settings that you would like to use for the first attempt of primer design and click 'Download Settings' to save the file. Additionally, you may also specify and download 'retry attempt' settings to be used if no primers are found with the default settings. There is no limit to the number of retry attempts you can define.
 
 Once all the settings files have been generated, ssh into the server hosting FORCAST and navigate to where the application is rooted (e.g. ```/var/www/html/FORCAST```). Within the ```config``` directory there should be a ```primer3settings.conf``` file and a directory, ```primer3settings```, where the default primer3 settings are stored. Replace these with your custom settings and edit the ```primer3settings.conf``` file to point to the new files like so:

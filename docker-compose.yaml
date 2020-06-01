@@ -2,11 +2,16 @@ version: '2'
 
 services:
     webserver:
-        image: helrick/forcast
+        #image: helrick/forcast
+        build:
+          context: .
+          dockerfile: Dockerfile
+        env_file:
+          - .env
         expose:
-            - ${APACHE2_PORT}
+            - 80
         ports:
-            - ${APACHE2_PORT}:${APACHE2_PORT}
+            - ${APACHE2_PORT}:80
         volumes:
             - ./mongodb:/data/db
             - ./src:/var/www/html/src
@@ -17,5 +22,7 @@ services:
             && ./setup.sh
             && python3 /var/www/html/src/setup/setup.py -r /var/www/html -g ${ORGANISM} -v ${ASSEMBLY} -fa2bit /var/www/html/bin/faToTwoBit -b /var/www/html/bin/ncbi-blast-2.7.1+/bin
             && /var/www/html/src/setup/enable_dicey.sh ${ORGANISM} ${ASSEMBLY}
+            && env | grep '^ATTEMPT_[0-9]\+_FILE\|^ATTEMPT_[0-9]\+_DESC' >
+            /var/www/html/config/primer3settings.conf
             && sudo service apache2 start
-            && tail -f /dev/null"
+            && tail -f /proc/self/fd/1"
