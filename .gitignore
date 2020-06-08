@@ -12,7 +12,7 @@ jbrowse/jbrowse.conf
 jbrowse/MYMETA.json
 jbrowse/MYMETA.yml
 config
-mongodb
+mongodb/*
 
 # filetypes
 *.pyc
@@ -28,3 +28,6 @@ src/primer-design/files/**/*.ape
 src/primer-design/files/**/*.json
 src/primer-design/files/**/*_input
 src/primer-design/files/**/*.doc
+
+#include
+!mongodb/.gitkeep
