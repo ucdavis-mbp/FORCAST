@@ -1,1 +1,1 @@
-[{"seqChunkSize":20000,"end":230208,"start":0,"name":"chrI","length":230208},{"seqChunkSize":20000,"start":0,"end":813178,"name":"chrII","length":813178}]
+[{"end":230208,"length":230208,"start":0,"name":"chrI","seqChunkSize":20000},{"seqChunkSize":20000,"length":813178,"start":0,"name":"chrII","end":813178}]
