@@ -20,8 +20,7 @@ services:
             bash -c "sudo mongod --fork --logpath /var/log/mongodb.log
             && cd /var/www/html/jbrowse
             && ./setup.sh
-            && python3 /var/www/html/src/setup/setup.py -r /var/www/html -g ${ORGANISM} -v ${ASSEMBLY} -fa2bit /var/www/html/bin/faToTwoBit -b /var/www/html/bin/ncbi-blast-2.7.1+/bin
-            && /var/www/html/src/setup/enable_dicey.sh ${ORGANISM} ${ASSEMBLY}
+            && chmod +x /var/www/html/src/setup/data.sh && /var/www/html/src/setup/data.sh
             && env | grep '^ATTEMPT_[0-9]\+_FILE\|^ATTEMPT_[0-9]\+_DESC' >
             /var/www/html/config/primer3settings.conf
             && sudo service apache2 start

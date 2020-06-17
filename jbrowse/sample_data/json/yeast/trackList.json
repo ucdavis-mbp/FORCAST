@@ -1,71 +1,71 @@
 {
-   "names" : {
-      "type" : "Hash",
-      "url" : "names/"
-   },
    "dataset_id" : "yeast",
-   "tracks" : [
-      {
-         "seqType" : "dna",
-         "category" : "Reference sequence",
-         "storeClass" : "JBrowse/Store/Sequence/StaticChunked",
-         "chunkSize" : 20000,
-         "urlTemplate" : "seq/{refseq_dirpath}/{refseq}-",
-         "key" : "Reference sequence",
-         "label" : "DNA",
-         "type" : "SequenceTrack"
-      },
-      {
-         "key" : "Protein-coding genes",
-         "urlTemplate" : "tracks/Genes/{refseq}/trackData.json",
-         "style" : {
-            "className" : "feature5",
-            "arrowheadClass" : "transcript-arrowhead",
-            "subfeatureClasses" : {
-               "CDS" : "transcript-CDS"
-            }
-         },
-         "storeClass" : "JBrowse/Store/SeqFeature/NCList",
-         "autocomplete" : "all",
-         "track" : "Genes",
-         "subfeatures" : true,
-         "compress" : 0,
-         "type" : "FeatureTrack",
-         "label" : "Genes",
-         "feature" : [
-            "gene"
-         ],
-         "category" : "Genes"
-      },
-      {
-         "key" : "Exonerate predictions (misconfigured for test, and with a long description)",
-         "urlTemplate" : "tracks/transcript_with_no_features/{refseq}/trackData.json",
-         "style" : {
-            "arrowheadClass" : "transcript-arrowhead",
-            "className" : "transcript",
-            "subfeatureClasses" : {
-               "UTR" : "transcript-UTR",
-               "CDS" : "transcript-CDS"
-            }
-         },
-         "subfeatures" : true,
-         "track" : "transcript_with_no_features",
-         "autocomplete" : "all",
-         "storeClass" : "JBrowse/Store/SeqFeature/NCList",
-         "compress" : 0,
-         "type" : "FeatureTrack",
-         "label" : "transcript_with_no_features",
-         "feature" : [
-            "mRNA"
-         ],
-         "category" : "Genes",
-         "description" : 1
-      }
-   ],
    "plugins" : [
       "NeatHTMLFeatures",
       "NeatCanvasFeatures",
       "HideTrackLabels"
    ],
-   "formatVersion" : 1
+   "names" : {
+      "type" : "Hash",
+      "url" : "names/"
+   },
+   "formatVersion" : 1,
+   "tracks" : [
+      {
+         "seqType" : "dna",
+         "storeClass" : "JBrowse/Store/Sequence/StaticChunked",
+         "chunkSize" : 20000,
+         "urlTemplate" : "seq/{refseq_dirpath}/{refseq}-",
+         "type" : "SequenceTrack",
+         "category" : "Reference sequence",
+         "label" : "DNA",
+         "key" : "Reference sequence"
+      },
+      {
+         "storeClass" : "JBrowse/Store/SeqFeature/NCList",
+         "type" : "FeatureTrack",
+         "category" : "Genes",
+         "urlTemplate" : "tracks/Genes/{refseq}/trackData.json",
+         "subfeatures" : true,
+         "autocomplete" : "all",
+         "style" : {
+            "subfeatureClasses" : {
+               "CDS" : "transcript-CDS"
+            },
+            "arrowheadClass" : "transcript-arrowhead",
+            "className" : "feature5"
+         },
+         "label" : "Genes",
+         "compress" : 0,
+         "feature" : [
+            "gene"
+         ],
+         "track" : "Genes",
+         "key" : "Protein-coding genes"
+      },
+      {
+         "storeClass" : "JBrowse/Store/SeqFeature/NCList",
+         "category" : "Genes",
+         "type" : "FeatureTrack",
+         "urlTemplate" : "tracks/transcript_with_no_features/{refseq}/trackData.json",
+         "subfeatures" : true,
+         "description" : 1,
+         "compress" : 0,
+         "autocomplete" : "all",
+         "label" : "transcript_with_no_features",
+         "style" : {
+            "subfeatureClasses" : {
+               "CDS" : "transcript-CDS",
+               "UTR" : "transcript-UTR"
+            },
+            "className" : "transcript",
+            "arrowheadClass" : "transcript-arrowhead"
+         },
+         "feature" : [
+            "mRNA"
+         ],
+         "key" : "Exonerate predictions (misconfigured for test, and with a long description)",
+         "track" : "transcript_with_no_features"
+      }
+   ]
 }
