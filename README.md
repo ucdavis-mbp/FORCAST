@@ -30,6 +30,14 @@ Navigate to the `FORCAST` directory. By default, the `.env` file defines yeast (
     ASSEMBLY=R64-1-1
 ```
 
+Optionally, for multiple organisms, you can include multiple entries by separating them with '|'. Be sure to be be
+ mindful of the order of the organism and the sequence of the matching assembly entries.
+
+```
+    ORGANISM=mus_musculus|mus_musculus_c57bl6nj
+    ASSEMBLY=GRCm38|C57BL_6NJ_v1
+```
+
 Change these defaults to your desired organism/genome build if they are different. A full list of available genomes can be found at [ftp://ftp.ensembl.org/pub/current_fasta](ftp://ftp.ensembl.org/pub/current_fasta).
 
 From within the `FORCAST` directory, build the docker container:
